@@ -79,7 +79,7 @@ http://localhost:8080/laboratory/0cd9783f-bf32-46a4-ba51-7043b6fe7214
 ]
 ```
 
-- Atualizar Tarefa
+- Atualizar Laboratório
 ```
 http://localhost:8080/laboratory/0cd9783f-bf32-46a4-ba51-7043b6fe7214
 
