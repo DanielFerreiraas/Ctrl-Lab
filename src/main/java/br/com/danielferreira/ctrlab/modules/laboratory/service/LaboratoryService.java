@@ -19,11 +19,11 @@ public class LaboratoryService {
     this.laboratoryRepository = laboratoryRepository;
   }
 
-  public Laboratory create(Laboratory laboratory) {
+  public Laboratory createLaboratory(Laboratory laboratory) {
     return laboratoryRepository.save(laboratory);
   }
 
-  public List<Laboratory> list() {
+  public List<Laboratory> listLaboratories() {
     Sort sort = Sort.by(Direction.ASC, "name");
     return laboratoryRepository.findAll(sort);
   }
@@ -32,7 +32,7 @@ public class LaboratoryService {
     return laboratoryRepository.findById(id);
   }
 
-  public Laboratory update(String id, Laboratory laboratory) {
+  public Laboratory updateLaboratory(String id, Laboratory laboratory) {
     laboratoryRepository.findById(id).ifPresentOrElse((existingLaboratory) -> {
       laboratory.setId(id);
       laboratoryRepository.save(laboratory);
@@ -43,7 +43,7 @@ public class LaboratoryService {
     return laboratory;
   }
 
-  public Laboratory delete(String id) {
+  public Laboratory deleteLaboratory(String id) {
     laboratoryRepository.findById(id).ifPresentOrElse((existingLaboratory) -> laboratoryRepository.delete(existingLaboratory), () -> {
       throw new BadRequestException("Laboratory %d não existe! ".formatted(id));
     });
