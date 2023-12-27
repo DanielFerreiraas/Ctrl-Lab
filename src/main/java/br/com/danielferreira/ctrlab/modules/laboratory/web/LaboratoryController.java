@@ -3,7 +3,6 @@ package br.com.danielferreira.ctrlab.modules.laboratory.web;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -24,18 +23,21 @@ import jakarta.validation.Valid;
 @RequestMapping("/laboratory")
 public class LaboratoryController {
   
-  @Autowired
   private LaboratoryService laboratoryService;
+
+  public LaboratoryController(LaboratoryService laboratoryService) {
+    this.laboratoryService = laboratoryService;
+  }
 
   @PostMapping
   ResponseEntity<Laboratory> create(@Valid @RequestBody Laboratory laboratory) {
     return ResponseEntity.status(HttpStatus.CREATED)
-        .body(laboratoryService.create(laboratory));
+        .body(laboratoryService.createLaboratory(laboratory));
   }
 
   @GetMapping
   List<Laboratory> list() {
-    return laboratoryService.list();
+    return laboratoryService.listLaboratories();
   }
 
   @GetMapping("{id}")
@@ -45,11 +47,11 @@ public class LaboratoryController {
 
   @PutMapping("{id}")
   ResponseEntity<Laboratory> update(@PathVariable String id, @RequestBody Laboratory laboratory) {
-    return ResponseEntity.status(HttpStatusCode.valueOf(200)).body(laboratoryService.update(id, laboratory));
+    return ResponseEntity.status(HttpStatusCode.valueOf(200)).body(laboratoryService.updateLaboratory(id, laboratory));
   }
 
   @DeleteMapping("{id}")
   ResponseEntity<Laboratory> delete(@PathVariable String id) {
-    return ResponseEntity.status(HttpStatusCode.valueOf(204)).body(laboratoryService.delete(id));
+    return ResponseEntity.status(HttpStatusCode.valueOf(204)).body(laboratoryService.deleteLaboratory(id));
   }
 }
