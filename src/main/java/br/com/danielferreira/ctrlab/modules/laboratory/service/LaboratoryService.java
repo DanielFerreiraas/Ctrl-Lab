@@ -44,9 +44,10 @@ public class LaboratoryService {
   }
 
   public Laboratory deleteLaboratory(String id) {
-    laboratoryRepository.findById(id).ifPresentOrElse((existingLaboratory) -> laboratoryRepository.delete(existingLaboratory), () -> {
-      throw new BadRequestException("Laboratory %d não existe! ".formatted(id));
-    });
+    laboratoryRepository.findById(id)
+        .ifPresentOrElse((existingLaboratory) -> laboratoryRepository.delete(existingLaboratory), () -> {
+          throw new BadRequestException("Laboratory %d não existe! ".formatted(id));
+        });
     return null;
   }
 }

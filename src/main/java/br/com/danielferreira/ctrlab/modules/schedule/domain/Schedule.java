@@ -28,8 +28,9 @@ public class Schedule {
     private String date;
     private String startHour;
     private String endHour;
-    
-    public Schedule(String laboratoryId, String userId, String courseId, String date, String startHour, String endHour){
+
+    public Schedule(String laboratoryId, String userId, String courseId, String date, String startHour,
+            String endHour) {
         this.laboratoryId = laboratoryId;
         this.userId = userId;
         this.courseId = courseId;

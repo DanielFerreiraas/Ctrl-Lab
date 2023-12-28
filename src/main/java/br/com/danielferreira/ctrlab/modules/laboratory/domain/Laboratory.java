@@ -27,7 +27,6 @@ public class Laboratory {
   private String hourOpen;
   private String hourClose;
 
-
   public Laboratory(String name, String source, String location, String hourOpen, String hourClose) {
     this.name = name;
     this.source = source;
