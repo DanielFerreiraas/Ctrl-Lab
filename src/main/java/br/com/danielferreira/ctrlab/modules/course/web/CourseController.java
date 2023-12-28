@@ -37,7 +37,7 @@ public class CourseController {
 
   @GetMapping
   List<Course> list() {
-    return courseService.listLaboratories();
+    return courseService.listCourses();
   }
 
   @GetMapping("{id}")

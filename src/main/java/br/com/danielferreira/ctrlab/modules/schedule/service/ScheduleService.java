@@ -10,36 +10,37 @@ import br.com.danielferreira.ctrlab.modules.schedule.repository.ScheduleReposito
 
 @Service
 public class ScheduleService {
-    
-    private ScheduleRepository scheduleRepository;
 
-    public ScheduleService(ScheduleRepository scheduleRepository) {
-        this.scheduleRepository = scheduleRepository;
-    }
+  private ScheduleRepository scheduleRepository;
 
-    public Schedule createSchedule(Schedule schedule) {
-        return scheduleRepository.save(schedule);
-    }
+  public ScheduleService(ScheduleRepository scheduleRepository) {
+    this.scheduleRepository = scheduleRepository;
+  }
 
-    public List<Schedule> listSchedules() {
-        return scheduleRepository.findAll();
-    }
+  public Schedule createSchedule(Schedule schedule) {
+    return scheduleRepository.save(schedule);
+  }
 
-    public Schedule updateSchedule(String id, Schedule schedule) {
-      scheduleRepository.findById(id).ifPresentOrElse((existingSchedule) -> {
-        schedule.setId(id);
-        scheduleRepository.save(schedule);
-      }, () -> {
-        throw new BadRequestException("Schedule %d não existe! ".formatted(id));
-      });
+  public List<Schedule> listSchedules() {
+    return scheduleRepository.findAll();
+  }
 
-      return schedule;
+  public Schedule updateSchedule(String id, Schedule schedule) {
+    scheduleRepository.findById(id).ifPresentOrElse((existingSchedule) -> {
+      schedule.setId(id);
+      scheduleRepository.save(schedule);
+    }, () -> {
+      throw new BadRequestException("Schedule %d não existe! ".formatted(id));
+    });
+
+    return schedule;
   }
 
   public Schedule deleteSchedule(String id) {
-    scheduleRepository.findById(id).ifPresentOrElse((existingSchedule) -> scheduleRepository.delete(existingSchedule), () -> {
-      throw new BadRequestException("Schedule %d não existe! ".formatted(id));
-    });
+    scheduleRepository.findById(id).ifPresentOrElse((existingSchedule) -> scheduleRepository.delete(existingSchedule),
+        () -> {
+          throw new BadRequestException("Schedule %d não existe! ".formatted(id));
+        });
     return null;
   }
 }

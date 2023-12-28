@@ -31,7 +31,7 @@ public class ScheduleController {
     @PostMapping
     ResponseEntity<Schedule> create(@Valid @RequestBody Schedule schedule) {
         return ResponseEntity.status(HttpStatus.CREATED)
-            .body(scheduleService.createSchedule(schedule));
+                .body(scheduleService.createSchedule(schedule));
     }
 
     @GetMapping
@@ -48,5 +48,5 @@ public class ScheduleController {
     ResponseEntity<Schedule> delete(@PathVariable String id) {
         return ResponseEntity.status(HttpStatusCode.valueOf(204)).body(scheduleService.deleteSchedule(id));
     }
-    
+
 }

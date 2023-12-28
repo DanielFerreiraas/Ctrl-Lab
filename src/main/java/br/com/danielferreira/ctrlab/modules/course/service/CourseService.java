@@ -14,17 +14,17 @@ import br.com.danielferreira.ctrlab.modules.course.domain.Course;
 @Service
 public class CourseService {
 
-    private CourseRepository courseRepository;
+  private CourseRepository courseRepository;
 
-    public CourseService(CourseRepository courseRepository) {
-        this.courseRepository = courseRepository;
-    }
+  public CourseService(CourseRepository courseRepository) {
+    this.courseRepository = courseRepository;
+  }
 
-    public Course createCourse(Course course) {
+  public Course createCourse(Course course) {
     return courseRepository.save(course);
   }
 
-  public List<Course> listLaboratories() {
+  public List<Course> listCourses() {
     Sort sort = Sort.by(Direction.ASC, "name");
     return courseRepository.findAll(sort);
   }
@@ -50,5 +50,5 @@ public class CourseService {
     });
     return null;
   }
-    
+
 }

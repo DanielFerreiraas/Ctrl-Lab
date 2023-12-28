@@ -28,5 +28,5 @@ public class Course {
     public Course(String name, int period) {
         this.name = name;
         this.period = period;
-    }    
+    }
 }

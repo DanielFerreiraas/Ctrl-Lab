@@ -22,7 +22,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/laboratory")
 public class LaboratoryController {
-  
+
   private LaboratoryService laboratoryService;
 
   public LaboratoryController(LaboratoryService laboratoryService) {
