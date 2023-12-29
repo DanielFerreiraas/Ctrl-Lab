@@ -33,7 +33,7 @@ public class User {
 
     @Column(unique = true)
     private int numberRegister;
-    
+
     private String description;
 
     public User(String username, String password, String type, String name, String source, int numberRegister,
