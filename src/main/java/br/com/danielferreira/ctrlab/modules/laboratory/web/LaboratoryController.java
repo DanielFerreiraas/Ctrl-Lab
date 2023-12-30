@@ -30,7 +30,7 @@ public class LaboratoryController {
   }
 
   @PostMapping
-  ResponseEntity<Laboratory> create(@Valid @RequestBody Laboratory laboratory) {
+  ResponseEntity<Laboratory> create(@RequestBody @Valid Laboratory laboratory) {
     return ResponseEntity.status(HttpStatus.CREATED)
         .body(laboratoryService.createLaboratory(laboratory));
   }
@@ -41,7 +41,7 @@ public class LaboratoryController {
   }
 
   @GetMapping("{id}")
-  Optional<Laboratory> getById(@PathVariable String id) {
+  Laboratory getById(@PathVariable String id) throws Exception {
     return laboratoryService.getById(id);
   }
 

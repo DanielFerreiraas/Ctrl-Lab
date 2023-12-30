@@ -28,9 +28,15 @@ public class LaboratoryService {
     return laboratoryRepository.findAll(sort);
   }
 
-  public Optional<Laboratory> getById(String id) {
-    return laboratoryRepository.findById(id);
-  }
+  public Laboratory getById(String id) throws Exception {
+    Optional<Laboratory> laboratoryOptional = laboratoryRepository.findById(id);
+
+    if (laboratoryOptional.isEmpty()) {
+        throw new Exception("Esse laboratório não existe!");
+    }
+
+    return laboratoryOptional.get();
+}
 
   public Laboratory updateLaboratory(String id, Laboratory laboratory) {
     laboratoryRepository.findById(id).ifPresentOrElse((existingLaboratory) -> {
